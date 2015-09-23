@@ -4,7 +4,7 @@
 'use strict';
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
+    console.log("Please choose either 'rock', 'paper', or 'scissors'.");
     return prompt();
 }
 function randomPlay() {
@@ -22,17 +22,13 @@ function randomPlay() {
 ////////////////////////////////////////////////
 
 function getPlayerMove(move) {
-    // Write an expression that operates on a variable called `move`
-   // If a `move` has a value, your expression should evaluate to that value.  	  
-  // However, if `move` is not specified / is null, your expression should equal `getInput()`.
+    
     return move || getInput();
 }
 
 function getComputerMove(move) {
-    // Write an expression that operates on a variable called `move`
-    // If a `move` has a value, your expression should evaluate to that value.
-    // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    return move || randomPLay();
+    
+	return move || randomPLay();
 }
 
 function getWinner(playerMove,computerMove) {
@@ -42,7 +38,7 @@ function getWinner(playerMove,computerMove) {
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
 
 
-    if (playerMove === computerMove){
+    if (playerMove === computerMove)
 	winner = "tie";
 
 	else if(playerMove === "rock"){
@@ -68,32 +64,42 @@ function getWinner(playerMove,computerMove) {
 }
 
 function playToFive() {
+    
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
-    // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-	
+    var playerMove;
+    var computerMove;
+    var winner;
 
 
-	for (var  = 0; i < 10; i ++){
-		if (playerWins === 5 || computerWins === 5){
-			console.log ("FINAL SCORE! Player: " + playerWins + "Computer: " + computerWins + "!");
-			break;
-    }
-    else {
-        if (winner === "player") {
-            playerWins++;
-            console.log("Current Score: Player: " + playerWins + "Computer: " + computerWins + ".");
-            
-        }
-        else if (winner === "computer") {
-            computerWins++;
-            console.log("Current Score: Player: " + playerWins + "Computer: " + computerWins + ".");
-            
-        }
-        getPlayerMove();
-    }
-}
+	for (var i = 0; i < 20; i++){
+		playerMove = getPlayerMove();
+		computerMove = getComputerMove();
+		winner = getWinner(playerMove, computerMove);
+  		
+			console.log("Player chose: " + playerMove + ". Computer chose: " + computerMove + ".");
+        	
+		if (winner === "player") {
+			playerWins++;
+            		console.log("Current Score: Player: " + playerWins + ". Computer: " + computerWins + ".");
+     				
+				if (playerWins === 5 || computerWins === 5){
+				console.log("FINAL SCORE! Player: " + playerWins + ". Computer: " + computerWins + ". The winner is: " + winner "!");
+				}	
+        	}	
+        	else if (winner === "computer") {
+            		computerWins++;
+			console.log("Current Score: Player: " + playerWins + ". Computer: " + computerWins + ".");
+          		
+				if (playerWins === 5 || computerWins === 5){
+                		console.log("FINAL SCORE! Player: " + playerWins + ". Computer: " + computerWins + ". The winner is: " + winner "!");
+                		}	    
+        		}
+		else if (winner === 'tie')
+	   		 console.log("It's a tie!");
+      
+    	}
    
     return [playerWins, computerWins];
 }
